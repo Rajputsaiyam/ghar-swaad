@@ -17,6 +17,9 @@ import {
   Check,
 } from "lucide-react";
 import { heroImage, logoImage, inr, waLink } from "../../utils/formatters";
+import heroVideo from "../../assets/hero-thali-video.mp4";
+import prepVideo from "../../assets/food-prep-video.mp4";
+import rotiVideo from "../../assets/roti-meal-video.mp4";
 import { useStore } from "../../context/StoreContext";
 
 const FEATURES = [
@@ -33,8 +36,12 @@ export function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="leaf-bg border-b border-border/50">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-14 md:grid-cols-2 md:py-20">
+      <section className="leaf-bg animated-gradient-mesh relative overflow-hidden border-b border-border/50">
+        {/* Soft Ambient Floating Light Gradient Glows */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
+        <div className="pointer-events-none absolute -bottom-24 right-4 h-96 w-96 rounded-full bg-accent/10 blur-3xl animate-pulse-glow" style={{ animationDelay: '3.5s' }} />
+
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 py-14 md:grid-cols-2 md:py-20">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-primary/40 bg-white shadow-soft shrink-0">
@@ -90,14 +97,35 @@ export function Home() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-[2.5rem] bg-gold/30 rotate-3 transform -z-10" />
-            <img
-              src={heroImage}
-              alt="Homemade Indian thali with dal, sabzi, roti and rice"
-              className="aspect-[5/4] w-full rounded-[2rem] object-cover shadow-soft border-4 border-card"
-            />
-            <div className="absolute -bottom-6 left-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur-sm">
+          <div className="relative group">
+            {/* Ambient Light Gradient Aura behind Video */}
+            <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-tr from-accent/25 via-gold/35 to-primary/25 rotate-3 transform -z-10 blur-lg animate-pulse-glow" />
+            <div className="absolute -inset-2 rounded-[2.2rem] bg-gold/30 rotate-2 transform -z-10" />
+
+            {/* AI Animated Hero Video */}
+            <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[2rem] border-4 border-card bg-muted shadow-2xl">
+              <video
+                src={heroVideo}
+                poster={heroImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Pulsing Live Fresh Badge */}
+              <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-black/45 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white shadow-xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <span>Freshly Cooked</span>
+              </div>
+            </div>
+
+            {/* Office Favourite Floating Card */}
+            <div className="absolute -bottom-6 left-6 rounded-2xl border border-border bg-card/95 p-4 shadow-soft backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02]">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                 Office Favourite
               </p>
@@ -134,6 +162,79 @@ export function Home() {
               <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{d}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Live Homestyle Experience Showcase (AI Video Animations) */}
+      <section className="mx-auto max-w-6xl px-4 py-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-br from-secondary/50 via-card to-amber-50/40 p-6 md:p-10 shadow-soft">
+          {/* Ambient Light Gradient Blob */}
+          <div className="pointer-events-none absolute -top-20 -right-20 h-72 w-72 rounded-full bg-gold/15 blur-2xl animate-pulse-glow" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-2xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
+
+          <div className="relative z-10 text-center max-w-2xl mx-auto mb-8">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-bold tracking-wider text-primary uppercase">
+              <Leaf className="h-3.5 w-3.5" /> From Our Kitchen To Your Desk
+            </span>
+            <h2 className="mt-3 font-display text-2xl md:text-3xl font-extrabold text-primary-deep">
+              Watch The Freshness In Action
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Every morning we roll fresh 100% whole-wheat rotis and slow-simmer wholesome meals with zero preservatives, just like home.
+            </p>
+          </div>
+
+          <div className="relative z-10 grid gap-6 md:grid-cols-2">
+            {/* Video 1: Fresh Rotis & Daily Dal */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-xs transition-all hover:shadow-soft">
+              <div className="aspect-[16/10] w-full overflow-hidden bg-muted relative">
+                <video
+                  src={rotiVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-3 left-3 rounded-full bg-black/40 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white">
+                  100% Whole Wheat
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-display text-base font-bold text-primary-deep">
+                  Tawa-Fresh Soft Rotis
+                </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Made fresh to order with pure whole-wheat flour, zero maida, zero baking soda.
+                </p>
+              </div>
+            </div>
+
+            {/* Video 2: Fresh Kitchen Preparation */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-xs transition-all hover:shadow-soft">
+              <div className="aspect-[16/10] w-full overflow-hidden bg-muted relative">
+                <video
+                  src={prepVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-3 left-3 rounded-full bg-black/40 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white">
+                  Hygienic Prep
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-display text-base font-bold text-primary-deep">
+                  Light & Wholesome Everyday Meals
+                </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Cooked with minimal oil and gentle spices so you feel energetic after lunch.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

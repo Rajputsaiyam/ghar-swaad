@@ -15,8 +15,43 @@
 }
 
 .leaf-bg {
-  background-image: radial-gradient(circle at 10% 20%, rgba(45, 90, 39, 0.08) 0 120px, transparent 121px),
-                    radial-gradient(circle at 90% 80%, rgba(217, 83, 30, 0.08) 0 160px, transparent 161px);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(45, 90, 39, 0.09) 0 140px, transparent 141px),
+    radial-gradient(circle at 90% 80%, rgba(217, 83, 30, 0.08) 0 180px, transparent 181px),
+    radial-gradient(circle at 50% 50%, rgba(229, 169, 60, 0.06) 0 240px, transparent 241px);
+}
+
+@keyframes subtle-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-mesh {
+  background: linear-gradient(-45deg, #FAF9F5, #F5F1E8, #EDF5EA, #FFF7ED, #FAF9F5);
+  background-size: 400% 400%;
+  animation: subtle-gradient 18s ease infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.06) rotate(2deg);
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 7s ease-in-out infinite;
 }
 
 @media print {
