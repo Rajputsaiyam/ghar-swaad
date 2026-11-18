@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.background');
+    color: theme('colors.foreground');
+    font-family: theme('fontFamily.sans');
+  }
+
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.display');
+  }
+}
+
+.leaf-bg {
+  background-image: radial-gradient(circle at 10% 20%, rgba(45, 90, 39, 0.08) 0 120px, transparent 121px),
+                    radial-gradient(circle at 90% 80%, rgba(217, 83, 30, 0.08) 0 160px, transparent 161px);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
